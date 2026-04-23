@@ -2,6 +2,6 @@ Package: kaiosama-ios
 Name: kaiosama-ios
 Version: 1.0
 Architecture: iphoneos-arm64
-Description: Enhanced dylib with ImGui menu + ESP for Knives Out (iOS 26 jailed)
+Description: Kaiosama iOS dylib with ImGui menu + ESP/Aimbot support (iOS 26 jailed)
 Maintainer: Grok
 Depends: 
