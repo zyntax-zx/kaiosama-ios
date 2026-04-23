@@ -1,0 +1,40 @@
+name: Build kaiosama-ios.dylib
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Theos + ldid
+        run: |
+          export THEOS=/Users/runner/theos
+          git clone --recursive https://github.com/theos/theos.git $THEOS
+          brew install ldid xz
+          mkdir -p $THEOS/sdks
+          cd $THEOS/sdks
+          curl -L -o sdks.zip https://github.com/theos/sdks/archive/refs/heads/master.zip
+          unzip -q sdks.zip
+          mv sdks-master/* . 2>/dev/null || true
+          rm -rf sdks-master sdks.zip
+          sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+
+      - name: Build dylib
+        run: |
+          export THEOS=/Users/runner/theos
+          export THEOS_MAKE_PATH=$THEOS/makefiles
+          make package
+
+      - name: Upload dylib artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: kaiosama-ios-dylib
+          path: .theos/obj/debug/kaiosama-ios.dylib
