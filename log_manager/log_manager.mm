@@ -15,7 +15,10 @@ extern "C" void init_logging() {
         NSString* bundleID = [[NSBundle mainBundle] bundleIdentifier];
         log_to_file("🚀 kaiosama-ios.dylib cargado correctamente");
         log_to_file("[BUNDLE] App actual: %s", [bundleID UTF8String]);
-        log_to_file("[LOG] Archivo creado en: %s", [logPath UTF8String]);
+        log_to_file("[LOG] Archivo creado en Documents del juego");
+        log_to_file("[PATH] %s", [logPath UTF8String]);
+    } else {
+        log_to_file("❌ No se pudo crear el log en Documents");
     }
 }
 
