@@ -1,9 +1,10 @@
+// core_server/server.cpp
 #include "server.h"
+#include "../log_manager/log_manager.h"   // ← Esta línea faltaba
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <pthread.h>
 #include <unistd.h>
-#include "../utils/utils.h"
 
 namespace core_server {
     void* server_thread(void*) {
