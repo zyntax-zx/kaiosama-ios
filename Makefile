@@ -1,8 +1,8 @@
 include $(THEOS)/makefiles/common.mk
 
-LIBRARY_NAME = enhanced-ios-hacker
+LIBRARY_NAME = kaiosama-ios
 
-enhanced-ios-hacker_FILES = main.cpp \
+kaiosama-ios_FILES = main.cpp \
     core_server/server.cpp \
     hook_engine/hook_engine.cpp \
     memory_engine/memory_engine.cpp \
@@ -14,8 +14,8 @@ enhanced-ios-hacker_FILES = main.cpp \
 ARCHS = arm64 arm64e
 TARGET = iphone:clang:latest:15.0
 
-enhanced-ios-hacker_CFLAGS = -fobjc-arc -std=c++20
-enhanced-ios-hacker_LDFLAGS = -framework Foundation -framework UIKit
+kaiosama-ios_CFLAGS = -fobjc-arc -std=c++20
+kaiosama-ios_LDFLAGS = -framework Foundation -framework UIKit
 
 include $(THEOS_MAKE_PATH)/library.mk
 
